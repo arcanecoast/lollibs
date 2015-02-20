@@ -15,11 +15,11 @@ You need CMake (<http://www.cmake.org/>) to build this library. Example of how t
 Visual Studio's nmake but you can use pretty same steps sequence for any other generator. Building steps are
 next:
 
-1. Open command line and change current directory with `cd' command to the directory where you unpacked the library's source code.
-2. Create new empty directory `build' and change your working directory to it by running `mkdir build', `cd build'.
-3. Run `cmake -G "NMake Makefiles" ..' to create Makefile.
-4. Run `nmake' to build the library.
-5. Optionally you can run `nmake install' to install newly built library.
+1. Open command line and change current directory with *cd* command to the directory where you unpacked the library's source code.
+2. Create new empty directory *build* and change your working directory to it by running *mkdir build*, *cd build*.
+3. Run *cmake -G "NMake Makefiles" ..* to create Makefile.
+4. Run *nmake* to build the library.
+5. Optionally you can run *nmake install* to install newly built library.
 
 Usage examples
 --------------
