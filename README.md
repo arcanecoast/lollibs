@@ -1,4 +1,3 @@
-======================================================
 Utility library for Lands of Lore: The Throne of Chaos
 ======================================================
 
@@ -9,7 +8,6 @@ Among supported formats are:
 - .ENG, .DIP, .GER, .FRE (see Translation.h)
 - .PAK (see Package.h)
 
---------------------
 Building the library
 --------------------
 
@@ -23,22 +21,19 @@ next:
 4. Run `nmake' to build the library.
 5. Optionally you can run `nmake install' to install newly built library.
 
---------------
 Usage examples
 --------------
 
 See the /examples folder.
 
------------------
 Library structure
 -----------------
 
 Library consists of the next folders:
-    /examples - examples which show how to use the library.
-    /include  - library headers for usage in your application.
-    /src      - library sources. They are needed for building the library.
+- /examples - examples which show how to use the library.
+- /include  - library headers for usage in your application.
+- /src      - library sources. They are needed for building the library.
     
------------------
 License agreement
 -----------------
 
@@ -53,8 +48,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>
-
----------------    
+ 
 Release history
 ---------------
 
