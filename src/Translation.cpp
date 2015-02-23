@@ -1,6 +1,7 @@
 #include <lollibs/Translation.h>
 
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 using namespace lollibs;
@@ -13,20 +14,13 @@ static const char SECONDARY_CHAR_ENCODING_TABLE_CD[16][8 + 1 /* for 0 symbol */]
     " eiu,.oa", "nsrctlai", "leoiratp", "eaoip bm"
 };
 
-bool Translation::LoadFromFile(const char *path)
+bool Translation::LoadFromStream(istream& in)
 {
     // Clear junk
 
     Clear();
-
-    // Open package file
-
-    ifstream in(path, ios_base::in | ios_base::binary | ios_base::ate);
-
-    if (!in.good()) {
-        return false;
-    }
-
+    
+    in.seekg(0, ios_base::end);
     unsigned long offsetToTechnicalEntryRawData = static_cast<unsigned long>(in.tellg()) - 1;
     in.seekg(0);
 
@@ -71,8 +65,39 @@ bool Translation::LoadFromFile(const char *path)
         m_items.push_back(content);
         delete[] content;
     }
-
+    
     return true;
+}
+
+bool Translation::LoadFromMemory(const char *data, const unsigned short& size)
+{
+    // Open in memory file
+
+    stringstream in(ios_base::in | ios_base::out | ios_base::binary | ios_base::ate);
+    in.write(data, size);
+
+    if (!in.good()) {
+        return false;
+    }
+    
+    // Try to load translation from opened stream
+    
+    return LoadFromStream(in);
+}
+
+bool Translation::LoadFromFile(const char *path)
+{
+    // Open on disk file
+
+    ifstream in(path, ios_base::in | ios_base::binary | ios_base::ate);
+
+    if (!in.good()) {
+        return false;
+    }
+    
+    // Try to load translation from opened stream
+    
+    return LoadFromStream(in);
 }
 
 void Translation::SaveToFile(const char *path) const
