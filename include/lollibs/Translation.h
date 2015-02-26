@@ -32,6 +32,7 @@ namespace lollibs {
     using std::string;
     using std::vector;
     using std::istream;
+    using std::ostream;
 
     class Translation
     {
@@ -45,7 +46,7 @@ namespace lollibs {
         typedef vector<string>::const_reference const_reference;
 
     public:
-        //! Load translation contents from a memory.
+        //! Load translation contents from the memory.
         /*!
         \param[in] data pointer to translation's content.
         \param[in] size length of translation's content.
@@ -53,19 +54,25 @@ namespace lollibs {
         */
         bool LoadFromMemory(const char *data, const unsigned short& size);
         
-        //! Load translation contents from a file on disk.
+        //! Load translation contents from the file on disk.
         /*!
         \param[in] path path to a file on disk.
         \return If translation was loaded successfully then true, else - false.
         */
         bool LoadFromFile(const char *path);
         
-        //! Load translation contents from a stream.
+        //! Load translation contents from the stream.
         /*!
         \param[in] stream stream with translation's content.
         \return If translation was loaded successfully then true, else - false.
         */
         bool LoadFromStream(istream& stream);
+        
+        //! Save translation contents to the stream.
+        /*!
+        \param[out] stream stream to what we need to write translation's content.
+        */
+        void SaveToStream(ostream& stream) const;
 
         //! Save translation to a file on disk.
         /*!

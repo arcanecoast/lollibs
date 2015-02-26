@@ -100,16 +100,8 @@ bool Translation::LoadFromFile(const char *path)
     return LoadFromStream(in);
 }
 
-void Translation::SaveToFile(const char *path) const
+void Translation::SaveToStream(ostream& out) const
 {
-    // Open file stream to write in
-
-    fstream out(path, ios_base::out | ios_base::binary | ios_base::trunc);
-
-    if (!out.good()) {
-        return;
-    }
-
     // Write header and calculate expected file length
 
     const unsigned long SIZE_OF_OFFSET = 2;
@@ -134,8 +126,20 @@ void Translation::SaveToFile(const char *path) const
 
     // Write technical record in raw data section (just 0)
 
-    char nullCharacter = '\0';
-    out.write(&nullCharacter, 1);
+    out.write("\0", 1);
+}
+
+void Translation::SaveToFile(const char *path) const
+{
+    // Open file stream to write in
+
+    fstream out(path, ios_base::out | ios_base::binary | ios_base::trunc);
+
+    if (!out.good()) {
+        return;
+    }
+
+    SaveToStream(out);
 }
 
 Translation::iterator Translation::Begin()
