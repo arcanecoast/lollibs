@@ -7,6 +7,7 @@ This library provides utilities to work with various Lands of Lore's formats.
 Among supported formats are:
 - .ENG, .DIP, .GER, .FRE (see Translation.h)
 - .PAK (see Package.h)
+- .FDT (see FileDataIndex.h)
 
 Building the library
 --------------------
